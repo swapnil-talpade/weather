@@ -9,7 +9,7 @@ import getFormattedWeatherData from "./services/weather";
 
 function App() {
   const [query, setQuery] = useState({ q: "kalyan" });
-  const [units, setunits] = useState("metric");
+  const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
 
   useEffect(() => {
@@ -23,8 +23,8 @@ function App() {
 
   return (
     <div className="mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br from-cyan-700 to-blue-700 h-fit shadow-xl">
-      <TopButtons />
-      <Inputs />
+      <TopButtons setQuery={setQuery} />
+      <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
 
       {weather && (
         <>
