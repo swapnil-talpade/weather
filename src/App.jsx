@@ -6,6 +6,8 @@ import TemperatureDetails from "./components/TemperatureDetails";
 import TimeAndLocation from "./components/TimeAndLocation";
 import TopButtons from "./components/TopButtons";
 import getFormattedWeatherData from "./services/weather";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [query, setQuery] = useState({ q: "kalyan" });
@@ -14,11 +16,17 @@ function App() {
 
   useEffect(() => {
     const fetchWeather = async () => {
-      await getFormattedWeatherData({ ...query, units }).then((data) =>
-        setWeather(data)
-      );
+      const message = query.q ?? "current location";
+
+      toast.info("Fetching weather for " + message);
+      await getFormattedWeatherData({ ...query, units }).then((data) => {
+        toast.success(
+          `Successfully fetched weather for ${data.name}, ${data.country}`
+        );
+        setWeather(data);
+      });
     };
-    // fetchWeather();
+    fetchWeather();
   }, [query, units]);
 
   const changeBackground = () => {
@@ -30,7 +38,7 @@ function App() {
 
   return (
     <div
-      className={`mx-auto max-w-screen-md mt-4 py-5 px-32 bg-gradient-to-br ${changeBackground()} h-fit shadow-xl`}
+      className={` py-5 px-32 bg-gradient-to-br ${changeBackground()} h-fit shadow-xl`}
     >
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
@@ -43,6 +51,7 @@ function App() {
           <Forecast title="daily forecast" items={weather.daily} />
         </>
       )}
+      <ToastContainer autoClose={2000} theme="colored" newestOnTop={true} />
     </div>
   );
 }
