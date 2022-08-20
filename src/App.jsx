@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div
-      className={` py-5 px-32 bg-gradient-to-br ${changeBackground()} h-fit shadow-xl`}
+      className={`py-5 lg:px-32 px-5 bg-gradient-to-br ${changeBackground()} shadow-xl`}
     >
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} units={units} setUnits={setUnits} />
