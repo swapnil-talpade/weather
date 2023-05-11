@@ -5,9 +5,11 @@ Reactjs app that shows us the weather all over the world. Uses Tailwind for that
 ## App Glance ✨
 
 <div align="center">
-    <img src="./demo/screen-1.png" width="40%" height="100%" />
-    <img src="./demo/screen-2.png" width="40%" height="100%" />
-    <img src="./demo/mobile-view.png" width="20%" height="100%" />
+    <img src="./demo/screen-1.png" width="100%" height="100%" />
+</div>
+<div>
+    <img src="./demo/mobile-view.png" width="29%" height="100%" />
+    <img src="./demo/screen-2.png" width="70%" height="100%" />
 </div>
 
 ## Deployed App 🚀
